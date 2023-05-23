@@ -18,7 +18,8 @@ Output specific details of the file
 
 ### All Platforms
 - Install the [Python Interpreter](https://python.org)
-- Download the 2 .py files, make sure they are in the same folder
+- Download the source code in [Releases](https://github.com/ddm135/ssSequencer/releases/)
+- Extract the source code into the same folder
 - Run ssSequencer.py
 
 ### Windows Only
