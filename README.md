@@ -22,6 +22,5 @@ Output specific details of the file
 - Run ssSequencer.py
 
 ### Windows Only
-- Download the 7z archive ssSequencer.7z in [Releases](https://github.com/ddm135/ssSequencer/releases/)
-- Extract all to 1 folder with [7-Zip](https://7-zip.org/)
-- Run the executable ssSequencer.exe
+- Download the executable ssSequencer.exe in [Releases](https://github.com/ddm135/ssSequencer/releases/)
+- Run the executable
