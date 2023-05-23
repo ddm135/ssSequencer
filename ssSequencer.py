@@ -5,7 +5,7 @@ from os import path
 
 
 def seq_batch(seq_folder):
-    print("seq | ogg: known properties only / all properties (invalid)")
+    print("seq | ogg: noteCount / noteCountUncheck (invalid)")
     for seq_file in glob.glob(path.join(seq_folder, '**', '*.seq'), recursive=True):
         seq = ssSEQ(seq_file)
         print(path.basename(seq_file), "|", seq.quick_str())
@@ -30,6 +30,8 @@ def main():
         seq_batch(seq_path)
     elif path.isfile(seq_path):
         seq_detail(seq_path)
+
+    print("\nPlease send me a message if the noteCount and noteCountUncheck numbers do not match up.")
 
 
 if __name__ == "__main__":
