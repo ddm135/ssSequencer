@@ -1,12 +1,13 @@
-import glob
+from glob import glob
+from os import path
+
 
 from ssSEQ import ssSEQ
-from os import path
 
 
 def seq_batch(seq_folder):
     print("seq | ogg: noteCount / noteCountUncheck (invalid)")
-    for seq_file in glob.glob(path.join(seq_folder, '**', '*.seq'), recursive=True):
+    for seq_file in glob(path.join(seq_folder, '**', '*.seq'), recursive=True):
         seq = ssSEQ(seq_file)
         print(path.basename(seq_file), "|", seq.quick_str())
 
