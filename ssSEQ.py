@@ -9,14 +9,12 @@ class ssSEQ:
     __SEQDATA_INFO_LAYOUTS = {
         101: {
             'name': "Legacy",
-            'padd_size': 0,
-            'null_bytes': 1
+            'padd_size': 0
         },
 
         102: {
-            'name': "Current",
-            'padd_size': 4,
-            'null_bytes': 2
+            'name': "Latest",
+            'padd_size': 4
         }
     }
 
@@ -181,8 +179,12 @@ class ssSEQ:
         __strs = ["SEQData_Info", SPACER]
         for __info in self.__SEQData_Info:
             __temp = f"{__info}: {self.__SEQData_Info[__info]}"
-            if __info == 'beatCount' and self.__SEQData_Info[__info] == 0 and self.__SEQData_Info['tempoCount'] > 1:
+            if __info == 'layout':
+                __temp += f" ({self.__SEQDATA_INFO_LAYOUTS[self.__SEQData_Info[__info]]['name']})"
+            elif __info == 'beatCount' and self.__SEQData_Info[__info] == 0 and self.__SEQData_Info['tempoCount'] > 1:
                 __temp += " (multi-tempo)"
+            elif __info == 'type':
+                __temp += f" ({self.__SEQDATA_INFO_TYPES[self.__SEQData_Info[__info]]['name']})"
             __strs.append(__temp)
         __strs.append('')
 
