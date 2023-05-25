@@ -1,5 +1,7 @@
 # ssSequencer
 what's in that beatmap file?
+or even those beatmap files?
+how long are all of those audio files?
 
 -----
 
