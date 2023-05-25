@@ -4,7 +4,7 @@ import struct
 SPACER = '-'*50
 
 
-# noinspection SpellCheckingInspection
+# noinspection SpellCheckingInspection,PyPep8Naming
 class ssSEQ:
     __SEQDATA_INFO_LAYOUTS = {
         101: {
@@ -46,6 +46,7 @@ class ssSEQ:
 
     # noinspection PyDictCreation
     def __init__(self, seq_file):
+        # Helper functions
         def read_int(buffer):
             return struct.unpack('i', buffer.read(4))[0]
 

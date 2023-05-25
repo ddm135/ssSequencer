@@ -22,7 +22,6 @@ def seq_batch(seq_folder):
     return seq_detected
 
 
-# noinspection SpellCheckingInspection
 # File mode
 def seq_details(seq_file):
     seq_detected = False

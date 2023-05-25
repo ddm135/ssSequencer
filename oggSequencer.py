@@ -1,5 +1,6 @@
 import audiofile
 
+
 from glob import glob
 from os import path, rename
 
@@ -15,9 +16,9 @@ def ogg_batch(ogg_folder):
     if ogg_files:
         print("ogg: duration")
         for ogg_file in ogg_files:
-            if audiofile.duration(ogg_file) > 13:
-                minutes = int(audiofile.duration(ogg_file) // 60)
-                seconds = int(audiofile.duration(ogg_file) % 60)
+            ogg_dur = audiofile.duration(ogg_file)
+            if ogg_dur > 13:
+                minutes, seconds = dur_split(ogg_dur)
                 print(f"{path.basename(ogg_file)}: {minutes}:{seconds}")
     else:
         print("Error: No audio file in folder")
@@ -28,9 +29,16 @@ def ogg_details(ogg_file):
     if not ogg_file.endswith('.a.bytes', '.ogg'):
         print("Error: Not an audio file")
     else:
-        minutes = int(audiofile.duration(ogg_file) // 60)
-        seconds = int(audiofile.duration(ogg_file) % 60)
-        print(f"{path.basename(ogg_file)}: {minutes}:{seconds}")
+        ogg_dur = audiofile.duration(ogg_file)
+        if ogg_dur > 13:
+            minutes, seconds = dur_split(ogg_dur)
+            print(f"{path.basename(ogg_file)}: {minutes}:{seconds}")
+
+
+def dur_split(dur):
+    minutes = int(dur // 60)
+    seconds = int(dur % 60)
+    return minutes, seconds
 
 
 def main():
