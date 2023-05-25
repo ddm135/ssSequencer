@@ -13,19 +13,18 @@ def seq_batch(seq_folder):
     if seq_files:
         seq_detected = True
         print("seq | ogg: noteCount / noteCountUncheck (invalid)")
+        for seq_file in seq_files:
+            seq = ssSEQ(seq_file)
+            print(path.basename(seq_file), "|", seq.quick_str())
     else:
         print("Error: No beatmap file in folder.")
-
-    for seq_file in seq_files:
-        seq = ssSEQ(seq_file)
-        print(path.basename(seq_file), "|", seq.quick_str())
 
     return seq_detected
 
 
 # noinspection SpellCheckingInspection
 # File mode
-def seq_detail(seq_file):
+def seq_details(seq_file):
     seq_detected = False
 
     if not seq_file.endswith('.seq'):
@@ -48,7 +47,7 @@ def main():
     elif path.isdir(seq_path):
         seq_detected = seq_batch(seq_path)
     elif path.isfile(seq_path):
-        seq_detected = seq_detail(seq_path)
+        seq_detected = seq_details(seq_path)
 
     if seq_detected:
         print("\nPlease send me a message if the noteCount and noteCountUncheck numbers do not match up.")
