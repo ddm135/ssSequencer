@@ -175,7 +175,7 @@ class ssSEQ:
                 skip_padding(seq, self.__SEQData_Info['layout'])
                 self.__SEQData_Event.append(__event)
 
-    def __str__(self):
+    def __repr__(self):
         # Info
         __strs = ["SEQData_Info", SPACER]
         for __info in self.__SEQData_Info:
@@ -246,6 +246,6 @@ class ssSEQ:
 
         return '\n'.join(__strs)
 
-    def quick_str(self):
+    def __str__(self):
         return f"{self.__SEQData_Object[0]['data']}: {self.__noteCount} / {self.__noteCountUncheck} " \
                f"(invalid: {self.__invalid})"
