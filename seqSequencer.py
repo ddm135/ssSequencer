@@ -15,7 +15,7 @@ def seq_batch(seq_folder):
         print("seq | ogg: noteCount / noteCountUncheck (invalid)")
         for seq_file in seq_files:
             seq = ssSEQ(seq_file)
-            print(path.basename(seq_file), "|", seq.quick_str())
+            print(path.basename(seq_file), "|", seq)
     else:
         print("Error: No beatmap file in folder.")
 
@@ -31,7 +31,7 @@ def seq_details(seq_file):
         return seq_detected
 
     seq = ssSEQ(seq_file)
-    print(seq)
+    print(repr(seq))
     seq_detected = True
 
     return seq_detected
