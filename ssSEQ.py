@@ -56,7 +56,7 @@ class ssSEQ:
         def read_double(buffer):
             return struct.unpack('d', buffer.read(8))[0]
 
-        def skip_padding(buffer, layout=102):
+        def skip_padding(buffer, layout):
             buffer.seek(self.__SEQDATA_INFO_LAYOUTS[layout]['padd_size'], 1)
 
         with open(seq_file, 'rb') as seq:
@@ -103,19 +103,24 @@ class ssSEQ:
                 self.__SEQData_Tempo.append(__tempo)
 
             # This part is a bit wonky
-            skip_padding(seq)
             # File names and comments
             self.__SEQData_Object = []
+            __last_object: dict = {}
+            __last_object['dataLen'] = read_int(seq)
+            if __last_object['dataLen']:
+                __last_object['data'] = seq.read(__last_object['dataLen']).decode('UTF-8')
             for i in range(self.__SEQData_Info['objectCount'] - 1):
                 # Not sure what property does
-                __object = {}
+                __object: dict = {}
                 __object['property'] = read_int(seq)
                 __object['dataLen'] = read_int(seq)
-                if not __object['dataLen']:
-                    continue
-                __object['data'] = seq.read(__object['dataLen']).decode('UTF-8')
-                self.__SEQData_Object.append(__object)
-            skip_padding(seq)
+                if __object['dataLen']:
+                    __object['data'] = seq.read(__object['dataLen']).decode('UTF-8')
+                    self.__SEQData_Object.append(__object)
+            __last_object['property'] = read_int(seq)
+            if __last_object['dataLen']:
+                __last_object = {'property': __last_object.pop('property'), **__last_object}
+                self.__SEQData_Object.append(__last_object)
 
             # Event count in each channel
             self.__SEQData_Channel = []
