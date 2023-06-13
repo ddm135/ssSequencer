@@ -42,7 +42,7 @@ def ogg_details(ogg_file):
 
 def dur_split(dur):
     minutes = int(dur // 60)
-    seconds = int(dur % 60)
+    seconds = str(int(dur % 60)).zfill(2)
     return minutes, seconds
 
 
