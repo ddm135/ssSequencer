@@ -1,3 +1,7 @@
+Archived. Use [ssrg-utils](https://github.com/ddm135/ssrg-utils) instead.
+
+-----
+
 # ssSequencer
 what's in that beatmap file?
 or even those beatmap files?
